@@ -1,0 +1,46 @@
+#A program that checks a password strength using python.
+
+def check_strength():
+    
+    #Prompt the user to enter the password.
+    password = input('Enter the password : ')
+    
+    #If space is detected, prompt the user and exit the function early.    
+    if  ' ' in password: 
+        print('Remove space') 
+        return #if the condition equals True then the program quits the function.
+    
+    #Count the number of characters in the password entered by the user.
+    length = len(password)  
+    has_upper = False
+    has_digit = False
+    has_symbol = False
+    has_length = False
+    
+    #Check each charcter individually.
+    for char in password:
+        if char.isupper(): 
+            has_upper = True
+        if char.isdigit(): 
+            has_digit = True
+        if not char.isalnum() and char != ' ': 
+            has_symbol = True
+            
+    #Check if length condition is met
+    if length >= 8: 
+        has_length = True
+
+    #Check evaluation result.
+    print('There is a digit: ',has_digit)
+    print('You used at least one upper letter:',has_upper)
+    print('There is a special charater : ',has_symbol)
+    print('You used at least 8 characters in your password: ',has_length)
+    
+    #Final decision on password strength .   
+    if has_upper  and has_digit  and has_symbol  and has_length: 
+        print('Strong password')
+    else:
+        print('Weak password')
+        
+#Call the function to run the program . 
+check_strength()      
